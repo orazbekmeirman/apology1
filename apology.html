@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology Letter</title>
+    <title>Письмо с извинениями</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f9e7e7;
             color: #333;
             text-align: center;
-            padding: 0;
+            padding: 50px;
             margin: 0;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
             position: relative;
         }
         .letter {
             cursor: pointer;
             background-color: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: inline-block;
             transition: transform 0.3s ease;
             position: relative;
             z-index: 2;
+            max-width: 300px;
+            border: 1px solid #e0e0e0;
+        }
+        .letter:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         .hidden-message {
             display: none;
             margin-top: 20px;
-        }
-        .letter:hover {
-            animation: float 2s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            font-size: 18px;
+            color: #555;
         }
         .hearts {
             position: absolute;
@@ -83,14 +77,14 @@
 </head>
 <body>
     <div class="letter" onclick="revealMessage()">
-        Click to open the letter!
+        Нажми, чтобы открыть письмо!
     </div>
     <div id="hiddenMessage" class="hidden-message">
-        Прости, что расстроил тебя. Думал, что дипсик сделал креативно и настолько плохо, что аж смешно.
+        Прости, что расстроил тебя. Думал, что дипсик сделал креативно и настолько ужасно, что аж смешно.
     </div>
 
     <div class="hearts">
-        <!-- Hearts will be dynamically generated -->
+        <!-- Сердца будут сгенерированы динамически -->
     </div>
 
     <script>
@@ -98,7 +92,7 @@
             document.getElementById('hiddenMessage').style.display = 'block';
         }
 
-        // Generate moving hearts
+        // Генерация движущихся сердец
         const heartsContainer = document.querySelector('.hearts');
         for (let i = 0; i < 20; i++) {
             const heart = document.createElement('span');
