@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology Letter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9e7e7;
+            color: #333;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .letter {
+            cursor: pointer;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+        }
+        .letter:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="red" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+            background-size: cover;
+            animation: animate-heart 10s linear infinite;
+        }
+        @keyframes animate-heart {
+            0% {
+                transform: translateY(-10%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter" onclick="revealMessage()">
+        Click to open the letter!
+    </div>
+    <div id="hiddenMessage" class="hidden-message">
+        Прости, что расстроил тебя. Думал, что дипсик сделал креативно и настолько плохо, что аж смешно.
+    </div>
+
+    <div class="hearts">
+        <!-- Hearts will be dynamically generated -->
+    </div>
+
+    <script>
+        function revealMessage() {
+            document.getElementById('hiddenMessage').style.display = 'block';
+        }
+
+        // Generate moving hearts
+        const heartsContainer = document.querySelector('.hearts');
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('span');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            heart.style.width = Math.random() * 20 + 10 + 'px';
+            heart.style.height = heart.style.width;
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
